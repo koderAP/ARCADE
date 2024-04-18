@@ -59,7 +59,9 @@ class Level:
         self.showing_elder_god_dialog = False
 
         self.showing_dialog = True
-        self.dialogs_completed = False   
+        self.dialogs_completed = False  
+
+        self.starpusher = True 
 
 
     def create_map(self):
@@ -237,8 +239,10 @@ class Level:
                     self.dialog_box.render(self.display_surface)
 
     def check_for_starpusher(self):
-        if self.player.rect.centerx >= 3360 and self.player.rect.centerx <= 3560 and self.player.rect.centery >= 3000 and self.player.rect.centery <= 3300:
+        if self.player.rect.centerx >= 1070 and self.player.rect.centerx <= 1090 and self.player.rect.centery >= 3620 and self.player.rect.centery <= 3620 and self.starpusher == True:
             starpusher_main()
+            self.starpusher = False
+
             
 
     def start_other_game(self):

@@ -114,6 +114,7 @@ def runLevel(levels, levelNum):
         for event in pygame.event.get():
             if event.type == QUIT:
                 terminate()
+                run = False
             elif event.type == KEYDOWN and event.key == K_ESCAPE:
                 return 'menu'
 
@@ -402,13 +403,16 @@ def main():
         if result in ('solved', 'next'):
             currentLevelIndex += 1
             if currentLevelIndex >= len(levels):
-                terminate()
+                break
+            
         elif result == 'back':
             currentLevelIndex -= 1
             if currentLevelIndex < 0:
                 currentLevelIndex = len(levels)-1
         elif result == 'reset':
             pass
+
+    return
 
 
 
@@ -444,6 +448,7 @@ def startScreen():
         for event in pygame.event.get():
             if event.type == QUIT:
                 terminate()
+
             elif event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
                     terminate()
@@ -466,6 +471,7 @@ def isLevelFinished(levelObj, gameStateObj):
 def terminate():
     pygame.quit()
     sys.exit()
+    return
 
 
 # if __name__ == '__main__':
