@@ -27,7 +27,7 @@ class Level:
         self.create_map()
         
         self.dialog_box = DialogBox(10, HEIGHT - 200, WIDTH - 20, HEIGHT * (2/9), "../Graphics/test/DialogueBoxSimple.png", "", font)
-        self.elder_god_dialogs = [
+        self.dialogs = [
             "Greetings,     young     traveler!",
             "Welcome    to      the     icy     regions     of      Eldoria.\n\nI    am      the     Elder     guardian    of      this    land.",
             "I      sense     a     brave       spirit      within    you,      eager     to    explore     and     learn.\n\nAre    you     ready   to      embark      on      a   journey     of      discovery?",
@@ -39,18 +39,21 @@ class Level:
 
         self.current_dialog_index = 0
         
-        self.dialogs = [
-            "Greetings,      young       one.",
-            "I       am       the       Elder       God,       keeper       of       wisdom\nand       guardian       of       this       realm.",
-            "You       have       traveled       far       and       faced       many       challenges.",
-            "But       your       journey       is       far       from       over.",
-            "Beyond       these       lands       lies       greater       trials       and       greater       rewards.",
-            "Seek       out       the       Elder       Frogs       scattered       across       the       world.",
-            "They       hold       the       keys       to       unlocking       your       true       potential.",
-            "Remember,      young      adventurer,      your      destiny      awaits.",
-            "May       the       Elder       Gods       guide       your       path."
+        self.elder_god_dialogs = [
+            "Ah,      young      traveler,      you      have      found      your      way      to      the      sands      \n\nof      our      realm.",
+            "Welcome!      Here,      amidst      the      swirling      dunes,      \n\nwisdom      awaits      those      who      seek      it.",
+
+            "In      the      vast      expanse      of      this      desert,      \n\ndanger      lurks      in      the      form      of      rocky      obstacles.",
+            "But      fear      not,      for      with      courage      and      swift      reflexes,      \n\nyou      can      navigate      this      terrain.",
+
+            "Listen      closely,      young      one.      Board      the      landspeeder,      \n\nand      venture      forth      into      the      sandy      wilderness.",
+            "Steer      clear      of      the      treacherous      rocks      that      dot      the      landscape,      \n\nand      your      journey      shall      be      a      fruitful      one.",
+
+            "May      the      Force      be      with      you."
 
         ]
+
+
         self.current_elder_god_dialog_index = 0
         self.showing_elder_god_dialog = False
 
