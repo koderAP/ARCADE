@@ -120,21 +120,21 @@ def runLevel(levels, levelNum):
 
             elif event.type == KEYDOWN:
                 keyPressed = True
-                if event.key == K_LEFT:
+                if event.key == K_a:
                     playerMoveTo = LEFT
-                elif event.key == K_RIGHT:
-                    playerMoveTo = RIGHT
-                elif event.key == K_UP:
-                    playerMoveTo = UP
-                elif event.key == K_DOWN:
-                    playerMoveTo = DOWN
-                elif event.key == K_a:
-                    cameraLeft = True
                 elif event.key == K_d:
-                    cameraRight = True
+                    playerMoveTo = RIGHT
                 elif event.key == K_w:
-                    cameraUp = True
+                    playerMoveTo = UP
                 elif event.key == K_s:
+                    playerMoveTo = DOWN
+                elif event.key == K_LEFT:
+                    cameraLeft = True
+                elif event.key == K_RIGHT:
+                    cameraRight = True
+                elif event.key == K_UP:
+                    cameraUp = True
+                elif event.key == K_DOWN:
                     cameraDown = True
 
                 elif event.key == K_n:
@@ -394,7 +394,7 @@ def main():
     PLAYERIMAGES = [IMAGESDICT['boy']]
 
     # startScreen() 
-    levels = readLevelsFile('../Graphics/starpusher/starPusherLevels.txt')
+    levels = readLevelsFile('../Map/starPusherLevels.txt')
     currentLevelIndex = 0
     while True: 
         result = runLevel(levels, currentLevelIndex)

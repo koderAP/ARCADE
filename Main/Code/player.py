@@ -16,7 +16,7 @@ class Player(pygame.sprite.Sprite):
         self.animation_speed = 0.15
         
         self.direction = pygame.math.Vector2()
-        self.speed = 10
+        self.speed = 5
         
         self.movable = False
         

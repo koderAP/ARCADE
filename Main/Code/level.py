@@ -8,6 +8,7 @@ from rect_save import main as rect_save_main
 from font import DialogBox
 from story import render_story
 from starpusher import main as starpusher_main
+from platformer import main as platformer_main
 
 font_path = "../Graphics/NormalFont.ttf"
 font = pygame.font.Font(font_path, 28)
@@ -71,6 +72,13 @@ class Level:
             "So      venture      forth,      intrepid      traveler,      and      may      the      echoes      of      our      tales      guide      your      steps      through      the      shadows      of      our      forsaken      home."
 
         ]
+        
+        self.forest_blob = [
+            "Greetings,      traveler.      If      it's      shelter      you      seek,      \n\nour      old      home      lies      just      beyond      these      ancient      trees.",
+            "Nestled      within      this      forsaken      forest,      \nour      once      vibrant      abode      now      stands      silent      and      still.",
+        ]
+        
+        
 
 
         self.current_elder_god_dialog_index = 0
@@ -84,6 +92,10 @@ class Level:
         self.starpusher = True 
         self.frog = True
         self.star_key = False
+        
+        self.showing_blob = False
+        self.blob = True
+        self.blob_key = False
 
 
     def create_map(self):
@@ -224,6 +236,10 @@ class Level:
                                 random_tree_image = graphics['house'][0]
                                 random_tree_image = maximize_image(random_tree_image)
                                 BigTile((x, y), [self.visible_sprites, self.obstacle_sprites], 'house', random_tree_image)
+                            if col == '487':
+                                random_tree_image = graphics['house'][1]
+                                random_tree_image = maximize_image(random_tree_image)
+                                BigTile((x, y), [self.visible_sprites, self.obstacle_sprites], 'house', random_tree_image)
                             
                    
         self.player = Player((3260,2990), [self.visible_sprites], self.obstacle_sprites) 
@@ -247,6 +263,7 @@ class Level:
             self.dialog_box.render(self.display_surface)
             
         self.start_starpusher()
+        self.start_platformer()
             
 
 
@@ -268,6 +285,14 @@ class Level:
                 if self.showing_forest_frog:
                     self.dialog_box.set_text(self.forest_frog[self.current_elder_god_dialog_index])
                     self.dialog_box.render(self.display_surface)
+        if self.player.rect.centerx >= 750 and self.player.rect.centerx <= 920 and self.player.rect.centery >= 2500 and self.player.rect.centery <= 2530:
+            if self.blob:
+                print("Other game started")
+                self.showing_blob = True
+                render_story(self.dialog_box)
+                if self.showing_blob:
+                    self.dialog_box.set_text(self.forest_blob[self.current_elder_god_dialog_index])
+                    self.dialog_box.render(self.display_surface)
 
             
     def start_starpusher(self):
@@ -282,6 +307,13 @@ class Level:
         rect_save_main() 
         self.landspeeder = False
         self.player.movable = True
+        
+    def start_platformer(self):
+        if self.player.rect.centerx >= 1020 and self.player.rect.centerx <= 1080 and self.player.rect.centery >= 2140 and self.player.rect.centery <= 2160:
+            if self.blob_key:
+                platformer_main()
+                self.blob_key = False
+                self.player.movable = True
                 
         
     def handle_event(self, event):
@@ -310,10 +342,20 @@ class Level:
                     if self.current_elder_god_dialog_index >= len(self.forest_frog):
                         self.showing_forest_frog = False
                         self.current_elder_god_dialog_index = 0
-                        # self.start_starpusher()
                         self.star_key = True
                         self.player.movable = True
                         self.frog = False
+            elif self.showing_blob:
+                self.player.movable = False
+                if event.key == pygame.K_RETURN:
+                    self.current_elder_god_dialog_index += 1
+                    if self.current_elder_god_dialog_index >= len(self.forest_blob):
+                        self.showing_blob = False
+                        self.current_elder_god_dialog_index = 0
+                        self.blob = False
+                        self.player.movable = True
+                        self.blob_key = True
+                        
 
         
 class YSortCameraGroup(pygame.sprite.Group):
