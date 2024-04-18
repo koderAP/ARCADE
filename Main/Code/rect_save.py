@@ -3,10 +3,10 @@ import pygame
 import time
 import random
 import math
-from tile import Tile
+from settings import WIDTH, HEIGHT
 pygame.font.init()
 
-WIDTH, HEIGHT = 1200, 900
+WIDTH, HEIGHT = WIDTH, HEIGHT
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Dodge")
 
@@ -149,7 +149,7 @@ def main():
                 hit = True
                 break
 
-        if elapsed_time >= 60:
+        if elapsed_time >= 40:
             run = False
             return 
         
