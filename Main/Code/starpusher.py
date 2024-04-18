@@ -360,25 +360,24 @@ def main():
     FPSCLOCK = pygame.time.Clock()
     DISPLAYSURF = pygame.display.set_mode((WINWIDTH, WINHEIGHT))
 
-    pygame.display.set_caption('Star Pusher')
-    BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
+    BASICFONT = pygame.font.Font('../Graphics/NormalFont.ttf', 18)
     base_directory = "../Graphics/starpusher/"
 
     # Update the image paths in IMAGESDICT
-    IMAGESDICT = {'uncovered goal': pygame.image.load(os.path.join(base_directory, 'RedSelector.png')),
+    IMAGESDICT = {'uncovered goal': pygame.transform.scale(pygame.image.load(os.path.join(base_directory, 'RedSelector.png')), (50, 80)),
                 'covered goal': pygame.image.load(os.path.join(base_directory, 'Selector.png')),
-                'star': pygame.image.load(os.path.join(base_directory, 'Star.png')),
-                'corner': pygame.image.load(os.path.join(base_directory, 'Wall_Block_Tall.png')),
-                'wall': pygame.image.load(os.path.join(base_directory, 'Wood_Block_Tall.png')),
-                'inside floor': pygame.image.load(os.path.join(base_directory, 'Plain_Block.png')),
-                'outside floor': pygame.image.load(os.path.join(base_directory, 'Grass_Block.png')),
+                'star': pygame.transform.scale(pygame.image.load(os.path.join(base_directory, 'Star.png')), (50, 65)),
+                'corner': pygame.transform.scale(pygame.image.load(os.path.join(base_directory, 'TilesetVillageAbandoned.png')), (50, 80)),
+                'wall':pygame.transform.scale(pygame.image.load(os.path.join(base_directory, 'Wood_Block_Tall.png')), (50, 80)),
+                'inside floor': pygame.transform.scale(pygame.image.load(os.path.join(base_directory, 'TilesetInteriorFloor.png')), (50, 75)),
+                'outside floor': pygame.transform.scale(pygame.image.load(os.path.join(base_directory, 'Grass_Block.png')), (55, 58)),
                 'title': pygame.image.load(os.path.join(base_directory, 'star_title.png')),
                 'solved': pygame.image.load(os.path.join(base_directory, 'star_solved.png')),
                 'boy': pygame.transform.scale(pygame.image.load(os.path.join(base_directory, 'boy.png')), (50, 50)),
-                'rock': pygame.image.load(os.path.join(base_directory, 'Rock.png')),
-                'short tree': pygame.image.load(os.path.join(base_directory, 'Tree_Short.png')),
-                'tall tree': pygame.image.load(os.path.join(base_directory, 'Tree_Tall.png')),
-                'ugly tree': pygame.image.load(os.path.join(base_directory, 'Tree_Ugly.png'))}
+                'rock': pygame.transform.scale(pygame.image.load(os.path.join(base_directory, 'Rock.png')), (40, 45)),
+                'short tree': pygame.transform.scale(pygame.image.load(os.path.join(base_directory, 'Tree_Short.png')), (50, 50)),
+                'tall tree': pygame.transform.scale(pygame.image.load(os.path.join(base_directory, 'Tree_Tall.png')), (30, 30)),
+                'ugly tree': pygame.transform.scale(pygame.image.load(os.path.join(base_directory, 'Tree_Ugly.png')), (30, 30))}
 
 
     TILEMAPPING = {'x': IMAGESDICT['corner'],
@@ -394,7 +393,7 @@ def main():
     currentImage = 0
     PLAYERIMAGES = [IMAGESDICT['boy']]
 
-    startScreen() 
+    # startScreen() 
     levels = readLevelsFile('../Graphics/starpusher/starPusherLevels.txt')
     currentLevelIndex = 0
     while True: 
@@ -474,5 +473,5 @@ def terminate():
     return
 
 
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()

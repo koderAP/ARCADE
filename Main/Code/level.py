@@ -23,7 +23,7 @@ class Level:
         
         self.visible_sprites = YSortCameraGroup()
         self.obstacle_sprites = pygame.sprite.Group()
-        self.other_game_active = True
+        self.landspeeder = True
         
         self.create_map()
         
@@ -40,7 +40,7 @@ class Level:
 
         self.current_dialog_index = 0
         
-        self.elder_god_dialogs = [
+        self.sand_frog = [
             "Ah,      young      traveler,      you      have      found      your      way      to      the      sands      \n\nof      our      realm.",
             "Welcome!      Here,      amidst      the      swirling      dunes,      \n\nwisdom      awaits      those      who      seek      it.",
 
@@ -53,15 +53,37 @@ class Level:
             "May      the      Force      be      with      you."
 
         ]
+        
+        self.forest_frog = [
+            "Greetings,      traveler.      If      it's      shelter      you      seek,      \n\nour      old      home      lies      just      beyond      these      ancient      trees.",
+
+            "Nestled      within      this      forsaken      forest,      \nour      once      vibrant      abode      now      stands      silent      and      still.",
+            "But      within      its      walls      lies      a      secret,      \na      game      of      challenges      and      puzzles      awaiting      discovery.",
+
+            "The      path      to      our      dwelling      may      be      obscured      by      nature's      grasp,      but      fear      not.      Follow      the      overgrown      trail,      and      soon      you      shall      stand      before      the      entrance      to      our      humble      sanctuary.",
+
+            "As      you      step      through      the      threshold,      prepare      yourself      for      a      descent      into      the      unknown.      The      floors      below      hold      the      keys      to      unlocking      the      mysteries      of      our      past.",
+
+            "The      house      you      seek      was      once      the      home      of      an      old      man      who      cherished      his      collection      of      miniature      frogs.      Many      tales      were      told      of      their      playful      antics      and      the      hidden      wonders      within      these      walls.",
+
+            "But      beware,      for      the      journey      ahead      is      not      for      the      faint      of      heart.      Only      those      with      resolve      and      wit      shall      prevail      in      the      face      of      adversity.",
+
+            "So      venture      forth,      intrepid      traveler,      and      may      the      echoes      of      our      tales      guide      your      steps      through      the      shadows      of      our      forsaken      home."
+
+        ]
 
 
         self.current_elder_god_dialog_index = 0
-        self.showing_elder_god_dialog = False
+        self.showing_sand_frog = False
+
+        self.showing_forest_frog = False
 
         self.showing_dialog = True
         self.dialogs_completed = False  
 
         self.starpusher = True 
+        self.frog = True
+        self.star_key = False
 
 
     def create_map(self):
@@ -224,32 +246,41 @@ class Level:
             self.dialog_box.set_text(self.dialogs[self.current_dialog_index])
             self.dialog_box.render(self.display_surface)
             
-        self.check_for_starpusher()
+        self.start_starpusher()
+            
 
 
 
     def check_position_for_different_level(self):
         if self.player.rect.centerx >= 1970 and self.player.rect.centerx <= 2130 and self.player.rect.centery >= 960 and self.player.rect.centery <= 970:
-            if self.other_game_active:
+            if self.landspeeder:
                 print("Other game started")
-                self.showing_elder_god_dialog = True
+                self.showing_sand_frog = True
                 render_story(self.dialog_box)
-                if self.showing_elder_god_dialog:
-                    self.dialog_box.set_text(self.elder_god_dialogs[self.current_elder_god_dialog_index])
+                if self.showing_sand_frog:
+                    self.dialog_box.set_text(self.sand_frog[self.current_elder_god_dialog_index])
+                    self.dialog_box.render(self.display_surface)
+        if self.player.rect.centerx >= 1709 and self.player.rect.centerx <= 1890 and self.player.rect.centery >= 3970 and self.player.rect.centery <= 3990:
+            if self.frog:
+                print("Other game started")
+                self.showing_forest_frog = True
+                render_story(self.dialog_box)
+                if self.showing_forest_frog:
+                    self.dialog_box.set_text(self.forest_frog[self.current_elder_god_dialog_index])
                     self.dialog_box.render(self.display_surface)
 
-    def check_for_starpusher(self):
-        if self.player.rect.centerx >= 1070 and self.player.rect.centerx <= 1090 and self.player.rect.centery >= 3620 and self.player.rect.centery <= 3620 and self.starpusher == True:
-            starpusher_main()
-            self.starpusher = False
-
             
-
-    def start_other_game(self):
+    def start_starpusher(self):
+        if self.player.rect.centerx >= 1030 and self.player.rect.centerx <= 1090 and self.player.rect.centery >= 3610 and self.player.rect.centery <= 3650:
+            if self.star_key:
+                starpusher_main()
+                self.player.movable = True
+                self.star_key = False
+    
+    def start_landspeeder(self):
         
         rect_save_main() 
-        print("Other game started 1")
-        self.other_game_active = False
+        self.landspeeder = False
         self.player.movable = True
                 
         
@@ -264,14 +295,25 @@ class Level:
                         self.current_dialog_index = 0
                         self.dialogs_completed = True
                         self.player.movable = True
-            elif self.showing_elder_god_dialog:
+            elif self.showing_sand_frog:
                 self.player.movable = False
                 if event.key == pygame.K_RETURN:
                     self.current_elder_god_dialog_index += 1
-                    if self.current_elder_god_dialog_index >= len(self.elder_god_dialogs):
-                        self.showing_elder_god_dialog = False
+                    if self.current_elder_god_dialog_index >= len(self.sand_frog):
+                        self.showing_sand_frog = False
                         self.current_elder_god_dialog_index = 0
-                        self.start_other_game() 
+                        self.start_landspeeder() 
+            elif self.showing_forest_frog:
+                self.player.movable = False
+                if event.key == pygame.K_RETURN:
+                    self.current_elder_god_dialog_index += 1
+                    if self.current_elder_god_dialog_index >= len(self.forest_frog):
+                        self.showing_forest_frog = False
+                        self.current_elder_god_dialog_index = 0
+                        # self.start_starpusher()
+                        self.star_key = True
+                        self.player.movable = True
+                        self.frog = False
 
         
 class YSortCameraGroup(pygame.sprite.Group):
