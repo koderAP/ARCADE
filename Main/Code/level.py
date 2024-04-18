@@ -7,6 +7,7 @@ from support import import_csv_layout, import_folder
 from rect_save import main as rect_save_main
 from font import DialogBox
 from story import render_story
+from starpusher import main as starpusher_main
 
 font_path = "../Graphics/NormalFont.ttf"
 font = pygame.font.Font(font_path, 28)
@@ -220,6 +221,8 @@ class Level:
         if self.showing_dialog:
             self.dialog_box.set_text(self.dialogs[self.current_dialog_index])
             self.dialog_box.render(self.display_surface)
+            
+        self.check_for_starpusher()
 
 
 
@@ -233,6 +236,10 @@ class Level:
                     self.dialog_box.set_text(self.elder_god_dialogs[self.current_elder_god_dialog_index])
                     self.dialog_box.render(self.display_surface)
 
+    def check_for_starpusher(self):
+        if self.player.rect.centerx >= 3360 and self.player.rect.centerx <= 3560 and self.player.rect.centery >= 3000 and self.player.rect.centery <= 3300:
+            starpusher_main()
+            
 
     def start_other_game(self):
         

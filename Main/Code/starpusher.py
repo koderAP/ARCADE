@@ -1,9 +1,10 @@
 import random, sys, copy, os, pygame
 from pygame.locals import *
+from settings import WIDTH, HEIGHT
 
 FPS = 60
-WINWIDTH = 800 
-WINHEIGHT = 600 
+WINWIDTH = WIDTH 
+WINHEIGHT = HEIGHT 
 HALF_WINWIDTH = int(WINWIDTH / 2)
 HALF_WINHEIGHT = int(WINHEIGHT / 2)
 
@@ -360,21 +361,23 @@ def main():
 
     pygame.display.set_caption('Star Pusher')
     BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
-    IMAGESDICT = {'uncovered goal': pygame.image.load('RedSelector.png'),
-                  'covered goal': pygame.image.load('Selector.png'),
-                  'star': pygame.image.load('Star.png'),
-                  'corner': pygame.image.load('Wall_Block_Tall.png'),
-                  'wall': pygame.image.load('Wood_Block_Tall.png'),
-                  'inside floor': pygame.image.load('Plain_Block.png'),
-                  'outside floor': pygame.image.load('Grass_Block.png'),
-                  'title': pygame.image.load('star_title.png'),
-                  'solved': pygame.image.load('star_solved.png'),
-                  'princess': pygame.image.load('princess.png'),
-                  'boy': pygame.image.load('boy.png'),
-                  'rock': pygame.image.load('Rock.png'),
-                  'short tree': pygame.image.load('Tree_Short.png'),
-                  'tall tree': pygame.image.load('Tree_Tall.png'),
-                  'ugly tree': pygame.image.load('Tree_Ugly.png')}
+    base_directory = "../Graphics/starpusher/"
+
+    # Update the image paths in IMAGESDICT
+    IMAGESDICT = {'uncovered goal': pygame.image.load(os.path.join(base_directory, 'RedSelector.png')),
+                'covered goal': pygame.image.load(os.path.join(base_directory, 'Selector.png')),
+                'star': pygame.image.load(os.path.join(base_directory, 'Star.png')),
+                'corner': pygame.image.load(os.path.join(base_directory, 'Wall_Block_Tall.png')),
+                'wall': pygame.image.load(os.path.join(base_directory, 'Wood_Block_Tall.png')),
+                'inside floor': pygame.image.load(os.path.join(base_directory, 'Plain_Block.png')),
+                'outside floor': pygame.image.load(os.path.join(base_directory, 'Grass_Block.png')),
+                'title': pygame.image.load(os.path.join(base_directory, 'star_title.png')),
+                'solved': pygame.image.load(os.path.join(base_directory, 'star_solved.png')),
+                'boy': pygame.transform.scale(pygame.image.load(os.path.join(base_directory, 'boy.png')), (50, 50)),
+                'rock': pygame.image.load(os.path.join(base_directory, 'Rock.png')),
+                'short tree': pygame.image.load(os.path.join(base_directory, 'Tree_Short.png')),
+                'tall tree': pygame.image.load(os.path.join(base_directory, 'Tree_Tall.png')),
+                'ugly tree': pygame.image.load(os.path.join(base_directory, 'Tree_Ugly.png'))}
 
 
     TILEMAPPING = {'x': IMAGESDICT['corner'],
@@ -388,11 +391,10 @@ def main():
 
 
     currentImage = 0
-    PLAYERIMAGES = [IMAGESDICT['princess'],
-                    IMAGESDICT['boy']]
+    PLAYERIMAGES = [IMAGESDICT['boy']]
 
     startScreen() 
-    levels = readLevelsFile('starPusherLevels.txt')
+    levels = readLevelsFile('../Graphics/starpusher/starPusherLevels.txt')
     currentLevelIndex = 0
     while True: 
         result = runLevel(levels, currentLevelIndex)
@@ -466,5 +468,5 @@ def terminate():
     sys.exit()
 
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
