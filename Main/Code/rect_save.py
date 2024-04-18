@@ -59,15 +59,15 @@ def main():
     
     run = True
     
-    player = pygame.Rect(500, HEIGHT - 2 * PLAYER_HEIGHT, PLAYER_WIDTH - 5, PLAYER_HEIGHT - 10)
+    player = pygame.Rect(500, HEIGHT - 2 * PLAYER_HEIGHT, PLAYER_WIDTH - 5, PLAYER_HEIGHT - 5)
     
     clock = pygame.time.Clock()
     
     start_time = time.time()
     elapsed_time = 0
     
-    stone_add_increment = 2000
-    stone_count = 5
+    stone_add_increment = 1000
+    stone_count = 3
     
     stones = []
     big_stones = []
@@ -92,7 +92,7 @@ def main():
             scroll = 0
         
         if stone_count > stone_add_increment:
-            for _ in range(3):
+            for _ in range(2):
                 stone_x = random.randint(0, WIDTH - STONE_WIDTH)
                 stone = pygame.Rect(stone_x, -STONE_HEIGHT, STONE_WIDTH, STONE_HEIGHT)
                 stones.append(stone)
@@ -101,7 +101,7 @@ def main():
                 big_stone = pygame.Rect(stone_x, -BIG_STONE_HEIGHT, BIG_STONE_WIDTH, BIG_STONE_HEIGHT)
                 big_stones.append(big_stone)
 
-            stone_add_increment = max(100, stone_add_increment - 10)
+            stone_add_increment = max(50, stone_add_increment - 10)
             stone_count = 0
         
         for event in pygame.event.get():
@@ -149,7 +149,7 @@ def main():
                 hit = True
                 break
 
-        if elapsed_time >= 5:
+        if elapsed_time >= 60:
             run = False
             return 
         
@@ -161,4 +161,3 @@ def main():
             main()
         
         draw(player, player_frame, elapsed_time, stones, big_stones)  
-
