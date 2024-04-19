@@ -42,3 +42,9 @@ Have fun cruising through various terrains and exploring all the arcades.
 ![Arcades](Screenshots/Platform.png)
 ![Arcades](Screenshots/Memory.png)
 ![Arcades](Screenshots/Frog.png)
+<p float="left">
+  <img src="Screenshots/Platform.png" width="100" />
+  <img src="Screenshots/LandSpeeder.png" width="100" /> 
+  <img src="Screenshots/Memory.png" width="100" />
+  <img src="Screenshots/Frog.png" width="100" />
+</p>
