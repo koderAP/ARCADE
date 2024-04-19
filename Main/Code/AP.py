@@ -40,7 +40,7 @@ SCREEN = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("Menu")
 
 BG = pygame.image.load("../Graphics/tilemap/backGround.png")
-BG = pygame.transform.scale(BG, (int(BG.get_width() * 1.1), int(BG.get_height() * 1.1)))
+BG = pygame.transform.scale(BG, (int(BG.get_width() * 1.2), int(BG.get_height() * 1.2)))
 
 def get_font(size): 
     return pygame.font.Font("../Graphics/NormalFont.ttf", size)

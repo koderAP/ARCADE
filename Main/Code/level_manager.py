@@ -111,11 +111,22 @@ class LevelManager:
                     self.dialog_box.set_text(self.forest_blob[self.current_elder_god_dialog_index])
                     self.dialog_box.render(self.display_surface)
 
-            
+     
+    def fade_out(self):
+        fade_surface = pygame.Surface((WIDTH, HEIGHT))
+        fade_surface.fill((0, 0, 0))
+        for alpha in range(0, 255, 10):  # Increase alpha for fade-out effect
+            fade_surface.set_alpha(alpha)
+            self.display_surface.blit(fade_surface, (0, 0))
+            pygame.display.flip()
+            pygame.time.Clock().tick(30)  # Adjust as needed
+       
     def start_pusher(self):
         if self.player.rect.centerx >= 1030 and self.player.rect.centerx <= 1090 and self.player.rect.centery >= 3610 and self.player.rect.centery <= 3650:
             if self.star_key:
+                self.fade_out()
                 pusher_main()
+                self.fade_out()
                 self.player.movable = True
                 self.star_key = False
                 pygame.mixer.pre_init(44100, -16, 2, 512)
@@ -124,8 +135,9 @@ class LevelManager:
                 pygame.mixer.music.play(-1, 0.0, 5000)
     
     def start_landspeeder(self):
-        
+        self.fade_out()
         rect_save_main() 
+        self.fade_out()
         self.landspeeder = False
         self.player.movable = True
         pygame.mixer.pre_init(44100, -16, 2, 512)
@@ -136,14 +148,18 @@ class LevelManager:
     def start_platformer(self):
         if self.player.rect.centerx >= 1020 and self.player.rect.centerx <= 1080 and self.player.rect.centery >= 2140 and self.player.rect.centery <= 2160:
             if self.blob_key:
+                self.fade_out()
                 platformer_main()
+                self.fade_out()
                 self.blob_key = False
                 self.player.movable = True
                 pygame.mixer.pre_init(44100, -16, 2, 512)
                 pygame.mixer.init()
-                pygame.mixer.music.load('../Graphics/Good Time.wav')
+                pygame.mixer.music.load('../Graphics/Good Time.ogg')
                 pygame.mixer.music.play(-1, 0.0, 5000)
                 
+    # def memory(self):
+        
         
     def handle_event(self, event):
         if event.type == pygame.KEYDOWN:

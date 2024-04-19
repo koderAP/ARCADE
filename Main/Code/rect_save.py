@@ -51,7 +51,7 @@ def main():
     
     pygame.mixer.pre_init(44100, -16, 2, 512)
     pygame.mixer.init()
-    pygame.mixer.music.load('../Graphics/starpusher/Speedster.ogg')
+    pygame.mixer.music.load('../Graphics/Speedster.ogg')
     pygame.mixer.music.play(-1, 0.0, 5000)
     
     bg = pygame.image.load("../Graphics/sand/sand0_0.png").convert()
