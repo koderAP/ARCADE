@@ -2,7 +2,6 @@
 
 ## APcade
 
-## Description
 This game is developed as a part of COP290 course. The game we made adheres to supporting children who have slow learning abilities and have trouble with the development of proper motor skills.
 
 ## Installation Instructions
