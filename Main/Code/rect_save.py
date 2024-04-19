@@ -132,7 +132,7 @@ def main():
         
         player_frame = PLAYER_FRAMES[current_frame]
         
-        player_hitbox = player.inflate(-40, -10)  
+        player_hitbox = player.inflate(-30, -10)  
         
         for stone in stones[:]:
             stone.y += STONE_VEL
