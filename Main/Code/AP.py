@@ -30,7 +30,7 @@ def run_game(map, level):
             print(level.current_dialog_index)
             level.dialog_box.render(map.display_surface)
             
-        level.start_starpusher()
+        level.start_pusher()
         level.start_platformer()
 
 

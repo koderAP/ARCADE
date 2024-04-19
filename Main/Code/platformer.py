@@ -27,7 +27,7 @@ def main():
     tile_size_y = 40
     game_over = 0
     level = 1
-    max_levels = 1
+    max_levels = 7
     score = 0
 
     white = (255, 255, 255)

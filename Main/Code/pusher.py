@@ -12,7 +12,7 @@ TILEWIDTH = 50
 TILEHEIGHT = 85
 TILEFLOORHEIGHT = 40
 
-CAM_MOVE_SPEED = 5 
+CAM_MOVE_SPEED = 0 
 
 OUTSIDE_DECORATION_PCT = 20
 
@@ -396,7 +396,7 @@ def main():
     PLAYERIMAGES = [IMAGESDICT['boy']]
 
     # startScreen() 
-    levels = readLevelsFile('../Map/starPusherLevels.txt')
+    levels = readLevelsFile('../Map/PusherLevels.txt')
     currentLevelIndex = 0
     while True: 
         result = runLevel(levels, currentLevelIndex)
