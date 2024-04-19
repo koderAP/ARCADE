@@ -145,16 +145,16 @@ class LevelManager:
                         self.dialogs_completed = True
                         self.player.movable = True
             elif self.showing_sand_frog:
-                self.player.movable = False
                 if event.key == pygame.K_RETURN:
+                    self.player.movable = False
                     self.current_elder_god_dialog_index += 1
                     if self.current_elder_god_dialog_index >= len(self.sand_frog):
                         self.showing_sand_frog = False
                         self.current_elder_god_dialog_index = 0
                         self.start_landspeeder() 
             elif self.showing_forest_frog:
-                self.player.movable = False
                 if event.key == pygame.K_RETURN:
+                    self.player.movable = False
                     self.current_elder_god_dialog_index += 1
                     if self.current_elder_god_dialog_index >= len(self.forest_frog):
                         self.showing_forest_frog = False
@@ -163,8 +163,8 @@ class LevelManager:
                         self.player.movable = True
                         self.frog = False
             elif self.showing_blob:
-                self.player.movable = False
                 if event.key == pygame.K_RETURN:
+                    self.player.movable = False
                     self.current_elder_god_dialog_index += 1
                     if self.current_elder_god_dialog_index >= len(self.forest_blob):
                         self.showing_blob = False

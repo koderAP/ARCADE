@@ -41,15 +41,18 @@ forest_frog_dialog = [
             "Nestled      within      this      forsaken      forest,      \nour      once      vibrant      abode      now      stands      silent      and      still.",
             "But      within      its      walls      lies      a      secret,      \na      game      of      challenges      and      puzzles      awaiting      discovery.",
 
-            "The      path      to      our      dwelling      may      be      obscured      by      nature's      grasp,      but      fear      not.      Follow      the      overgrown      trail,      and      soon      you      shall      stand      before      the      entrance      to      our      humble      sanctuary.",
+            "The      path      to      our      dwelling      may      be      obscured      by      nature's      grasp,      \nbut      fear      not.",
+            "Follow      the      overgrown      trail,      and      \nsoon      you      shall      stand      before      the      entrance      \nto      our      humble      sanctuary.",
 
-            "As      you      step      through      the      threshold,      prepare      yourself      for      a      descent      into      the      unknown.      The      floors      below      hold      the      keys      to      unlocking      the      mysteries      of      our      past.",
+            "As      you      step      through      the      threshold,      \nprepare      yourself      for      a      descent      into      the      unknown.",
+            "The      floors      below      hold      the      keys      to      \nunlocking      the      mysteries      of      our      past.",
 
-            "The      house      you      seek      was      once      the      home      of      an      old      man      who      cherished      his      collection      of      miniature      frogs.      Many      tales      were      told      of      their      playful      antics      and      the      hidden      wonders      within      these      walls.",
+            "The      house      you      seek      was      once      the      home      \nof      an      old      man      who      cherished      his      collection      of      miniature      frogs.",
+            "Many      tales      were      told      of      their      playful      antics      and      \nthe      hidden      wonders      within      these      walls.",
 
-            "But      beware,      for      the      journey      ahead      is      not      for      the      faint      of      heart.      Only      those      with      resolve      and      wit      shall      prevail      in      the      face      of      adversity.",
+            "But      beware,      for      the      journey      ahead      is      not      for      the      faint      of      heart.      \nOnly      those      with      resolve      and      \nwit      shall      prevail      in      the      face      of      adversity.",
 
-            "So      venture      forth,      intrepid      traveler,      and      may      the      echoes      of      our      tales      guide      your      steps      through      the      shadows      of      our      forsaken      home."
+            "So      venture      forth,      intrepid      traveler,      \nand      may      the      echoes      of      our      tales      \nguide      your      steps      through      the      shadows      of      our      forsaken      home."
 
         ]
 
