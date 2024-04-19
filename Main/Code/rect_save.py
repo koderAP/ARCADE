@@ -154,11 +154,12 @@ def main():
                 hit = True
                 break
 
-        if elapsed_time >= 40:
-            run = False
-            return 
+        
         
         if hit:
+            if elapsed_time >= 40:
+                run = False
+                return 
             lost_text = FONT.render("You lost!", 1, "white")
             WIN.blit(lost_text, (WIDTH/2 - lost_text.get_width()/2, HEIGHT/2 - lost_text.get_height()/2))
             pygame.display.update()
