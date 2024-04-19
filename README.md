@@ -34,11 +34,8 @@ Have fun cruising through various terrains and exploring all the arcades.
 
 ## Screenshots
 
-### Registration Page
-![Registration Page](Screenshot/Registration.png)
+### Main Menu
+![Main Menu](Screenshot/Screenshot 2024-04-19 225303.png)
 
-### Login Page
-![Login Page](Screenshot/Login.png)
-
-### Dashboard
-![Dashboard](Screenshot/Dashboard.png)
+### Arcades
+![Arcades](Screenshot/Screenshot 2024-04-19 221028.png)
