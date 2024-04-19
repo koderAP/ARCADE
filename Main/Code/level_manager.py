@@ -51,7 +51,6 @@ class LevelManager:
     def check_position_for_different_level(self):
         if self.player.rect.centerx >= 1970 and self.player.rect.centerx <= 2130 and self.player.rect.centery >= 960 and self.player.rect.centery <= 970:
             if self.landspeeder:
-                print("Other game started")
                 self.showing_sand_frog = True
                 render_story(self.dialog_box)
                 if self.showing_sand_frog:
@@ -59,7 +58,6 @@ class LevelManager:
                     self.dialog_box.render(self.display_surface)
         if self.player.rect.centerx >= 1709 and self.player.rect.centerx <= 1890 and self.player.rect.centery >= 3970 and self.player.rect.centery <= 3990:
             if self.frog:
-                print("Other game started")
                 self.showing_forest_frog = True
                 render_story(self.dialog_box)
                 if self.showing_forest_frog:
@@ -67,7 +65,6 @@ class LevelManager:
                     self.dialog_box.render(self.display_surface)
         if self.player.rect.centerx >= 750 and self.player.rect.centerx <= 920 and self.player.rect.centery >= 2500 and self.player.rect.centery <= 2530:
             if self.blob:
-                print("Other game started")
                 self.showing_blob = True
                 render_story(self.dialog_box)
                 if self.showing_blob:
@@ -139,14 +136,10 @@ class LevelManager:
         
     def handle_event(self, event):
         if event.type == pygame.KEYDOWN:
-            print("in here")    
             if self.showing_dialog:
-                print("not here")
                 if event.key == pygame.K_RETURN:
-                    print("why yes")
                     self.current_dialog_index += 1
                     if self.current_dialog_index >= len(self.dialogs):
-                        print("Dialogs completed")
                         self.showing_dialog = False
                         self.current_dialog_index = 0
                         self.dialogs_completed = True

@@ -183,7 +183,6 @@ class display:
         if level.showing_dialog:
             level.dialog_box.set_text(level.dialogs[level.current_dialog_index])
             # level.handle_event(event)
-            print(level.current_dialog_index)
             level.dialog_box.render(self.display_surface)
             
         level.start_starpusher()

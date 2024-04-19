@@ -22,7 +22,6 @@ def run_game(map, level):
         
         # Render story
         render_story(level.dialog_box)
-        print(map.player.rect.centerx, map.player.rect.centery)
         # Render dialog box
         if level.showing_dialog:
             level.dialog_box.set_text(level.dialogs[level.current_dialog_index])
