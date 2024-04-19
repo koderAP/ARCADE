@@ -12,6 +12,7 @@ This game is developed as a part of COP290 course. The game we made adheres to s
 - Make sure Python is installed on your system.
 - Install the necessary dependencies:
   In this case our game is completely dependent on pygame.
+  
   ```
   pip install pygame
   ``` 
