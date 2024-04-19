@@ -2,7 +2,7 @@ import pygame
 from font import DialogBox
 from settings import WIDTH, HEIGHT
 from story import render_story
-from starpusher import main as starpusher_main
+from pusher import main as pusher_main
 from rect_save import main as rect_save_main
 from platformer import main as platformer_main
 
@@ -76,7 +76,7 @@ class LevelManager:
         self.showing_dialog = True
         self.dialogs_completed = False  
 
-        self.starpusher = True 
+        self.pusher = True 
         self.frog = True
         self.star_key = False
         
@@ -112,10 +112,10 @@ class LevelManager:
                     self.dialog_box.render(self.display_surface)
 
             
-    def start_starpusher(self):
+    def start_pusher(self):
         if self.player.rect.centerx >= 1030 and self.player.rect.centerx <= 1090 and self.player.rect.centery >= 3610 and self.player.rect.centery <= 3650:
             if self.star_key:
-                starpusher_main()
+                pusher_main()
                 self.player.movable = True
                 self.star_key = False
     
