@@ -1,6 +1,7 @@
 # COP290 A2
 
-## Description
+## APcade
+
 This game is developed as a part of COP290 course. The game we made adheres to supporting children who have slow learning abilities and have trouble with the development of proper motor skills.
 
 ## Installation Instructions
@@ -38,7 +39,12 @@ Have fun cruising through various terrains and exploring all the arcades.
 ![Main Menu](Screenshots/MainMenu.png)
 
 ### Arcades
-![Arcades](Screenshots/LandSpeeder.png)
-![Arcades](Screenshots/Platform.png)
-![Arcades](Screenshots/Memory.png)
-![Arcades](Screenshots/Frog.png)
+
+<p float="left">
+  <img src="Screenshots/Platform.png" width="500" />
+  <img src="Screenshots/LandSpeeder.png" width="500" /> 
+</p>
+<p>
+  <img src="Screenshots/Memory.png" width="500" />
+  <img src="Screenshots/Frog.png" width="500" />
+</p>
