@@ -49,6 +49,11 @@ def draw(player, player_frame, elapsed_time, stones, big_stones):
 
 def main():
     
+    pygame.mixer.pre_init(44100, -16, 2, 512)
+    pygame.mixer.init()
+    pygame.mixer.music.load('../Graphics/starpusher/Speedster.ogg')
+    pygame.mixer.music.play(-1, 0.0, 5000)
+    
     bg = pygame.image.load("../Graphics/sand/sand0_0.png").convert()
     bg = pygame.transform.scale(bg, (int(bg.get_width() * 1.5), int(bg.get_height() * 1.5)))
 

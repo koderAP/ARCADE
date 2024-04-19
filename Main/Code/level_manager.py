@@ -118,12 +118,20 @@ class LevelManager:
                 starpusher_main()
                 self.player.movable = True
                 self.star_key = False
+                pygame.mixer.pre_init(44100, -16, 2, 512)
+                pygame.mixer.init()
+                pygame.mixer.music.load('../Graphics/Good Time.ogg')
+                pygame.mixer.music.play(-1, 0.0, 5000)
     
     def start_landspeeder(self):
         
         rect_save_main() 
         self.landspeeder = False
         self.player.movable = True
+        pygame.mixer.pre_init(44100, -16, 2, 512)
+        pygame.mixer.init()
+        pygame.mixer.music.load('../Graphics/Good Time.ogg')
+        pygame.mixer.music.play(-1, 0.0, 5000)
         
     def start_platformer(self):
         if self.player.rect.centerx >= 1020 and self.player.rect.centerx <= 1080 and self.player.rect.centery >= 2140 and self.player.rect.centery <= 2160:
@@ -131,6 +139,10 @@ class LevelManager:
                 platformer_main()
                 self.blob_key = False
                 self.player.movable = True
+                pygame.mixer.pre_init(44100, -16, 2, 512)
+                pygame.mixer.init()
+                pygame.mixer.music.load('../Graphics/Good Time.wav')
+                pygame.mixer.music.play(-1, 0.0, 5000)
                 
         
     def handle_event(self, event):

@@ -6,6 +6,11 @@ from level_manager import LevelManager
 from settings import WIDTH, HEIGHT
 from story import render_story
 
+pygame.mixer.pre_init(44100, -16, 2, 512)
+pygame.mixer.init()
+pygame.mixer.music.load('../Graphics/Good Time.ogg')
+pygame.mixer.music.play(-1, 0.0, 5000)
+
 def run_game(map, level):
         # Render game elements
         map.visible_sprites.custom_draw(map.player)

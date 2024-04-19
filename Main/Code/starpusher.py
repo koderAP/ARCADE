@@ -190,7 +190,6 @@ def runLevel(levels, levelNum):
         mapSurfRect = mapSurf.get_rect()
         mapSurfRect.center = (HALF_WINWIDTH + cameraOffsetX, HALF_WINHEIGHT + cameraOffsetY)
 
-        # Draw mapSurf to the DISPLAYSURF Surface object.
         DISPLAYSURF.blit(mapSurf, mapSurfRect)
 
         DISPLAYSURF.blit(levelSurf, levelRect)
@@ -211,8 +210,6 @@ def runLevel(levels, levelNum):
         FPSCLOCK.tick()
 
 def isWall(mapObj, x, y):
-    """Returns True if the (x, y) position on
-    the map is a wall, otherwise return False."""
     if x < 0 or x >= len(mapObj) or y < 0 or y >= len(mapObj[x]):
         return False 
     elif mapObj[x][y] in ('#', 'x'):
@@ -355,6 +352,11 @@ def floodFill(mapObj, x, y, oldCharacter, newCharacter):
 
 
 def main():
+    pygame.mixer.pre_init(44100, -16, 2, 512)
+    pygame.mixer.init()
+    pygame.mixer.music.load('../Graphics/starpusher/12 - Temple.ogg')
+    pygame.mixer.music.play(-1, 0.0, 5000)
+    
     global FPSCLOCK, DISPLAYSURF, IMAGESDICT, TILEMAPPING, OUTSIDEDECOMAPPING, BASICFONT, PLAYERIMAGES, currentImage
     pygame.init()
     FPSCLOCK = pygame.time.Clock()
