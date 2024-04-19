@@ -174,7 +174,7 @@ def flashButtonAnimation(color, animationSpeed=50):
 
     origSurf = DISPLAYSURF.copy()
     sound.play()
-    for start, end, step in ((0, 255, 1), (255, 0, -1)): # animation loop
+    for start, end, step in ((0, 255, 1), (255, 100, -1)): # animation loop
         for alpha in range(start, end, animationSpeed * step):
             checkForQuit()
             DISPLAYSURF.blit(origSurf, (0, 0))
@@ -248,5 +248,5 @@ def getButtonClicked(x, y):
     return None
 
 
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()
