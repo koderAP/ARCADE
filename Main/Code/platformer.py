@@ -357,6 +357,8 @@ def main():
 
         if game_over == -1:
             draw_text('GAME OVER!', font, [0,0,0], (screen_width // 2) - 200, screen_height // 2)
+            
+            draw_text('Press   ESC   to   play   again', font, [0,0,0], (screen_width // 2) - 350, (screen_height // 2) + 50)
 
         if game_over == 1:
             level += 1
