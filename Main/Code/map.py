@@ -159,6 +159,10 @@ class display:
                                 random_tree_image = graphics['house'][1]
                                 random_tree_image = maximize_image(random_tree_image)
                                 BigTile((x, y), [self.visible_sprites, self.obstacle_sprites], 'house', random_tree_image)
+                            if col == '369':
+                                random_tree_image = graphics['house'][2]
+                                random_tree_image = maximize_image(random_tree_image)
+                                BigTile((x, y), [self.visible_sprites, self.obstacle_sprites], 'house', random_tree_image)
                             
                    
         self.player = Player((3260,2990), [self.visible_sprites], self.obstacle_sprites) 
