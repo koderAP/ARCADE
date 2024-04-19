@@ -1,14 +1,25 @@
 import random, sys, time, pygame
 from pygame.locals import *
+from settings import *
 
 FPS = 30
-WINDOWWIDTH = 640
-WINDOWHEIGHT = 480
+WINDOWWIDTH = WIDTH
+WINDOWHEIGHT = HEIGHT
 FLASHSPEED = 500 
 FLASHDELAY = 200 
-BUTTONSIZE = 200
+BUTTONSIZE = 300
 BUTTONGAPSIZE = 20
 TIMEOUT = 4 
+
+yellowBlockImg = pygame.image.load('../Graphics/simulate/yellow.png')
+blueBlockImg = pygame.image.load('../Graphics/simulate/blue.png')
+redBlockImg = pygame.image.load('../Graphics/simulate/orange.png')
+greenBlockImg = pygame.image.load('../Graphics/simulate/white.png')
+
+yellowBlockImg = pygame.transform.scale(yellowBlockImg, (BUTTONSIZE, BUTTONSIZE))
+blueBlockImg = pygame.transform.scale(blueBlockImg, (BUTTONSIZE, BUTTONSIZE))
+redBlockImg = pygame.transform.scale(redBlockImg, (BUTTONSIZE, BUTTONSIZE))
+greenBlockImg = pygame.transform.scale(greenBlockImg, (BUTTONSIZE, BUTTONSIZE))
 
 #                R    G    B
 WHITE        = (255, 255, 255)
@@ -39,18 +50,17 @@ def main():
     pygame.init()
     FPSCLOCK = pygame.time.Clock()
     DISPLAYSURF = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
-    pygame.display.set_caption('Simulate')
 
-    BASICFONT = pygame.font.Font('freesansbold.ttf', 16)
+    BASICFONT = pygame.font.Font('../Graphics/NormalFont.ttf', 20)
     infoSurf = BASICFONT.render('Match the pattern by clicking on the button or using the Q, W, A, S keys.', 1, DARKGRAY)
     infoRect = infoSurf.get_rect()
     infoRect.topleft = (10, WINDOWHEIGHT - 25)
 
     # load the sound files
-    BEEP1 = pygame.mixer.Sound('beep1.ogg')
-    BEEP2 = pygame.mixer.Sound('beep2.ogg')
-    BEEP3 = pygame.mixer.Sound('beep3.ogg')
-    BEEP4 = pygame.mixer.Sound('beep4.ogg')
+    BEEP1 = pygame.mixer.Sound('../Graphics/simulate/beep1.ogg')
+    BEEP2 = pygame.mixer.Sound('../Graphics/simulate/beep2.ogg')
+    BEEP3 = pygame.mixer.Sound('../Graphics/simulate/beep3.ogg')
+    BEEP4 = pygame.mixer.Sound('../Graphics/simulate/beep4.ogg')
 
     # Initialize some variables for a new game
     pattern = [] # stores the pattern of colors
@@ -122,6 +132,9 @@ def main():
                 score = 0
                 pygame.time.wait(1000)
                 changeBackgroundAnimation()
+                
+            if score >= 5:
+                return
 
         pygame.display.update()
         FPSCLOCK.tick(FPS)
@@ -144,42 +157,38 @@ def checkForQuit():
 def flashButtonAnimation(color, animationSpeed=50):
     if color == YELLOW:
         sound = BEEP1
-        flashColor = BRIGHTYELLOW
+        flashSurf = yellowBlockImg
         rectangle = YELLOWRECT
     elif color == BLUE:
         sound = BEEP2
-        flashColor = BRIGHTBLUE
+        flashSurf = blueBlockImg
         rectangle = BLUERECT
     elif color == RED:
         sound = BEEP3
-        flashColor = BRIGHTRED
+        flashSurf = redBlockImg
         rectangle = REDRECT
     elif color == GREEN:
         sound = BEEP4
-        flashColor = BRIGHTGREEN
+        flashSurf = greenBlockImg
         rectangle = GREENRECT
 
     origSurf = DISPLAYSURF.copy()
-    flashSurf = pygame.Surface((BUTTONSIZE, BUTTONSIZE))
-    flashSurf = flashSurf.convert_alpha()
-    r, g, b = flashColor
     sound.play()
     for start, end, step in ((0, 255, 1), (255, 0, -1)): # animation loop
         for alpha in range(start, end, animationSpeed * step):
             checkForQuit()
             DISPLAYSURF.blit(origSurf, (0, 0))
-            flashSurf.fill((r, g, b, alpha))
+            flashSurf.set_alpha(alpha)
             DISPLAYSURF.blit(flashSurf, rectangle.topleft)
             pygame.display.update()
             FPSCLOCK.tick(FPS)
-    DISPLAYSURF.blit(origSurf, (0, 0))
 
 
 def drawButtons():
-    pygame.draw.rect(DISPLAYSURF, YELLOW, YELLOWRECT)
-    pygame.draw.rect(DISPLAYSURF, BLUE,   BLUERECT)
-    pygame.draw.rect(DISPLAYSURF, RED,    REDRECT)
-    pygame.draw.rect(DISPLAYSURF, GREEN,  GREENRECT)
+    DISPLAYSURF.blit(yellowBlockImg, YELLOWRECT)
+    DISPLAYSURF.blit(blueBlockImg, BLUERECT)
+    DISPLAYSURF.blit(redBlockImg, REDRECT)
+    DISPLAYSURF.blit(greenBlockImg, GREENRECT)
 
 
 def changeBackgroundAnimation(animationSpeed=40):
@@ -215,8 +224,6 @@ def gameOverAnimation(color=WHITE, animationSpeed=50):
     r, g, b = color
     for i in range(3): # do the flash 3 times
         for start, end, step in ((0, 255, 1), (255, 0, -1)):
-            # The first iteration in this loop sets the following for loop
-            # to go from 0 to 255, the second from 255 to 0.
             for alpha in range(start, end, animationSpeed * step): # animation loop
                 # alpha means transparency. 255 is opaque, 0 is invisible
                 checkForQuit()
@@ -241,5 +248,5 @@ def getButtonClicked(x, y):
     return None
 
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()

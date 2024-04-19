@@ -5,6 +5,7 @@ from story import render_story, main_dialog, sand_frog_dialog, forest_frog_dialo
 from pusher import main as pusher_main
 from rect_save import main as rect_save_main
 from platformer import main as platformer_main
+from simulate import main as simulate_main
 
 
 font_path = "../Graphics/NormalFont.ttf"
@@ -45,6 +46,7 @@ class LevelManager:
         self.blob = True
         self.blob_key = False
 
+        self.memory_there = True
 
     def check_position_for_different_level(self):
         if self.player.rect.centerx >= 1970 and self.player.rect.centerx <= 2130 and self.player.rect.centery >= 960 and self.player.rect.centery <= 970:
@@ -119,7 +121,20 @@ class LevelManager:
                 pygame.mixer.music.load('../Graphics/Good Time.ogg')
                 pygame.mixer.music.play(-1, 0.0, 5000)
                 
-    # def memory(self):
+    def memory(self):
+        if self.memory_there:
+            if self.player.rect.centerx >= 3820 and self.player.rect.centerx <= 3900 and self.player.rect.centery >= 2460 and self.player.rect.centery <= 2490:
+                pygame.mixer.music.stop()
+                self.fade_out()
+                simulate_main() 
+                self.fade_out()
+                self.sound = False
+                self.player.movable = True
+                pygame.mixer.pre_init(44100, -16, 2, 512)
+                pygame.mixer.init()
+                pygame.mixer.music.load('../Graphics/Good Time.ogg')
+                pygame.mixer.music.play(-1, 0.0, 5000)
+                self.memory_there = False
         
         
     def handle_event(self, event):
